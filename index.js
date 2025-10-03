@@ -92,16 +92,17 @@ const app = express();
 app.use(express.json()); // To parse JSON body
 
 // MongoDB connection
-mongoose.connect("mongodb+srv://danishnazakat:danish1@cluster0.rpvrbpd.mongodb.net/myDatabase")
-    .then(() => console.log("✅ Connected to MongoDB"))
-    .catch((err) => console.log("❌ MongoDB connection error:", err));
+mongoose.connect("mongodb+srv://danishnazakat:M5o8zfyIge1ggFIF@cluster0.rpvrbpd.mongodb.net/myDatabase")
+    .then(() => console.log(" Connected to MongoDB"))
+    .catch((err) => console.log(" MongoDB connection error:", err));
 
 // User schema
 const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
+    name:{ type: String,
+         required: true 
+        },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now }
 });
 
 // User model
@@ -117,7 +118,7 @@ app.post("/signup", async (req, res) => {
         await newUser.save();
 
         res.status(201).json({
-            message: "User registered successfully ✅",
+            message: "User registered successfully ",
             user: newUser
         });
     } catch (err) {
@@ -127,5 +128,5 @@ app.post("/signup", async (req, res) => {
 
 // Start server
 app.listen(3000, () => {
-    console.log("🚀 Server running on http://localhost:3000");
+    console.log(" Server running on http://localhost:3000");
 });
